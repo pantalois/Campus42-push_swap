@@ -6,12 +6,43 @@
 /*   By: loigonza <loigonza@student.42carcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 12:29:21 by loigonza          #+#    #+#             */
-/*   Updated: 2024/03/26 17:37:51 by loigonza         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:43:27 by loigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <push_swap.h>
+#include "push_swap.h"
 #include <unistd.h>
+#include <stdio.h>
+
+long	ft_atol(char *argv[])
+{
+	int		i;
+	int		j;
+	int		sign;
+	long	num;
+	
+	i = 1;
+	j = 0;
+	sign = 1;
+	num = 0;
+	if (argv[i][j] == '-')
+	{
+		sign = sign * -1;
+		j++;
+	}
+	while (argv[i][j] != '\0')
+	{
+		num = num * 10 + (argv[i][j] - 48);
+		j++;
+	}
+	num = num * sign;
+	return (num);
+}
+
+
+
+
+
 
 int	repeatarg(char *argv[])
 {
@@ -65,6 +96,22 @@ int	sytxfail(char *argv[])
 return (0);
 }
 
+int	rangeint(char *argv[])
+{
+	int	i;
+	
+	i = 1;
+	while (argv[i])
+	{
+		if (ft_atol(argv) > INT_MAX || ft_atol(argv) < INT_MIN)
+			return (1);
+		else
+			argv++;
+	}
+	return (0);
+}
+
+	
 	
 int	main(int argc, char *argv[])
 {
@@ -72,7 +119,7 @@ int	main(int argc, char *argv[])
 	{
 		if (*argv[1])
 		{
-			if (repeatarg(argv) || sytxfail(argv))
+			if (repeatarg(argv) || sytxfail(argv) || rangeint(argv))
 			{
 				write (1, "Error\n", 6);
 				return (0);
