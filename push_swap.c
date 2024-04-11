@@ -6,7 +6,7 @@
 /*   By: loigonza <loigonza@student.42carcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 12:29:21 by loigonza          #+#    #+#             */
-/*   Updated: 2024/03/28 13:43:27 by loigonza         ###   ########.fr       */
+/*   Updated: 2024/04/11 18:09:33 by loigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ long	ft_atol(char *argv[])
 	num = num * sign;
 	return (num);
 }
-
-
-
-
-
 
 int	repeatarg(char *argv[])
 {
@@ -110,19 +105,29 @@ int	rangeint(char *argv[])
 	}
 	return (0);
 }
-
-	
 	
 int	main(int argc, char *argv[])
 {
+	t_list	*stack_a;
+	t _list	*stack_b;
+	
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc >= 2)
 	{
-		if (*argv[1])
+		if (*argv[i])
 		{
 			if (repeatarg(argv) || sytxfail(argv) || rangeint(argv))
 			{
-				write (1, "Error\n", 6);
+				write (2, "Error\n", 6);
 				return (0);
+			}
+			while (*argv[i])
+			{
+				//ft_crear_nodo
+				//meter contenido de *argv[] pasado por Atoi
+				fill_stack(stack_a, argv);//anhadir con esta funcion.
+				i++;
 			}
 		}
 		return (0);

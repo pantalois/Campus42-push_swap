@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loigonza <loigonza@student.42carcel>       +#+  +:+       +#+        */
+/*   By: loigonza <loigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 22:42:14 by loigonza          #+#    #+#             */
-/*   Updated: 2024/04/11 18:09:35 by loigonza         ###   ########.fr       */
+/*   Created: 2024/04/11 17:02:11 by loigonza          #+#    #+#             */
+/*   Updated: 2024/04/11 18:00:22 by loigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-#include <limits.h>
-
-typedef struct s_list
+t_list	*fill_stack(*argv[])
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	int	i;
 
-int	main(int argc, char *argv[]);
-
-#endif
+	i = 1;
+}
