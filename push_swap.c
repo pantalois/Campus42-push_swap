@@ -6,7 +6,7 @@
 /*   By: loigonza <loigonza@student.42carcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 12:29:21 by loigonza          #+#    #+#             */
-/*   Updated: 2024/04/11 18:09:33 by loigonza         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:13:47 by loigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 #include <unistd.h>
 #include <stdio.h>
 
-long	ft_atol(char *argv[])
+long	ft_atol(char *argv)
 {
 	int		i;
-	int		j;
 	int		sign;
 	long	num;
 	
-	i = 1;
-	j = 0;
+	i = 0;
 	sign = 1;
 	num = 0;
-	if (argv[i][j] == '-')
+
+	if (argv[i] == '-')
 	{
 		sign = sign * -1;
-		j++;
+		i++;
 	}
-	while (argv[i][j] != '\0')
+	while (argv[i] != '\0')
 	{
-		num = num * 10 + (argv[i][j] - 48);
-		j++;
+		num = num * 10 + (argv[i] - 48);
+		i++;
 	}
 	num = num * sign;
 	return (num);
@@ -62,6 +61,8 @@ int	repeatarg(char *argv[])
 		}
 		i++;
 	}
+	if (!argv[i])
+		return (1);
 	return (0);
 }
 
@@ -80,7 +81,6 @@ int	sytxfail(char *argv[])
 			{	
 				if (!argv[i][j + 1] || (argv[i][j + 1] < '0' || argv[i][j + 1] > '9'))
 					return (1);
-				j++;
 			}
 			else if (argv[i][j] < '0' || argv[i][j] > '9')
 				return (1);
@@ -98,10 +98,10 @@ int	rangeint(char *argv[])
 	i = 1;
 	while (argv[i])
 	{
-		if (ft_atol(argv) > INT_MAX || ft_atol(argv) < INT_MIN)
+		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN) //INT_MAX +1; mirarselo!!
 			return (1);
 		else
-			argv++;
+			i++;
 	}
 	return (0);
 }
@@ -109,8 +109,11 @@ int	rangeint(char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_list	*stack_a;
-	t _list	*stack_b;
+	t_list	*stack_b;
+	int		nodo;
+	int		i;
 	
+	i = 1;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc >= 2)
@@ -122,14 +125,31 @@ int	main(int argc, char *argv[])
 				write (2, "Error\n", 6);
 				return (0);
 			}
-			while (*argv[i])
+			while (argv[i])
 			{
-				//ft_crear_nodo
-				//meter contenido de *argv[] pasado por Atoi
-				fill_stack(stack_a, argv);//anhadir con esta funcion.
+				nodo = (int)ft_atol(argv[i]);
+				fill_stack(&stack_a, nodo);
 				i++;
 			}
 		}
-		return (0);
+		if (!lst_sorted(stack_a))
+		{
+			if (ft_lstsize(stack_a) == 2)
+				sa(&stack_a);
+			else if (ft_lstsize(stack_a) == 3)
+				ft_sort_three(&stack_a);
+			else if (ft_lstsize(stack_a) <= 5)
+				order_all(&stack_a, &stack_b, 1);
+			else
+				order_all(&stack_a, &stack_b, 0);
+		}
+		/*
+		while (stack_a)
+		{
+			printf("%d\n", stack_a -> content);
+			stack_a = stack_a -> next;
+		}*/
+		free_stack(&stack_a);
 	}
+	return (0);	
 }
