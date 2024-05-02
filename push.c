@@ -6,7 +6,7 @@
 /*   By: loigonza <loigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 15:00:39 by loigonza          #+#    #+#             */
-/*   Updated: 2024/04/29 13:57:54 by loigonza         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:09:44 by loigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	push(t_list **stack_src, t_list **stack_dst)
 	t_list	*tmp;
 
 	tmp = *stack_src;
-	*stack_src = (*stack_src) -> next;
+	*stack_src = (*stack_src)->next;
 	if (*stack_src)
-		(*stack_src) -> prev = NULL;
+		(*stack_src)->prev = NULL;
 	if (!*stack_dst)
 	{
 		*stack_dst = tmp;
-		(*stack_dst) -> next = NULL;
+		(*stack_dst)->next = NULL;
 	}
 	else
 	{
-		(*stack_dst) -> prev = tmp;
+		(*stack_dst)->prev = tmp;
 		tmp -> next = *stack_dst;
 		*stack_dst = tmp;
 	}

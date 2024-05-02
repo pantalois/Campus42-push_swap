@@ -6,7 +6,7 @@
 /*   By: loigonza <loigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:43:02 by loigonza          #+#    #+#             */
-/*   Updated: 2024/04/29 13:57:38 by loigonza         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:48:46 by loigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	rev_rotate(t_list **stack)
 
 	tmp = *stack;
 	*stack = ft_lstlast(*stack);
-	(*stack) -> prev = NULL;
-	(*stack) -> next = tmp;
-	tmp -> prev = *stack;
-	while (tmp -> next != *stack)
-		tmp = tmp -> next;
-	tmp -> next = NULL;
+	(*stack)->prev = NULL;
+	(*stack)->next = tmp;
+	tmp->prev = *stack;
+	while (tmp->next != *stack)
+		tmp = tmp->next;
+	tmp->next = NULL;
 }
 
 void	rra(t_list **stack)

@@ -6,23 +6,24 @@
 /*   By: loigonza <loigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 16:01:40 by loigonza          #+#    #+#             */
-/*   Updated: 2024/04/29 13:57:25 by loigonza         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:50:51 by loigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 void	rotate(t_list **stack_a)
 {
-	  t_list *tmp;
-	  t_list *last_pos;
+	t_list	*tmp;
+	t_list	*last_pos;
 
-	  last_pos = ft_lstlast(*stack_a);
-	  tmp = *stack_a;
-	  *stack_a = (*stack_a) -> next;
-	  (*stack_a) -> prev = NULL;
-	  tmp -> prev = last_pos;
-	  last_pos -> next = tmp;
-	  tmp -> next = NULL;
+	last_pos = ft_lstlast(*stack_a);
+	tmp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	(*stack_a)->prev = NULL;
+	tmp->prev = last_pos;
+	last_pos->next = tmp;
+	tmp->next = NULL;
 }
 
 void	ra(t_list **stack)
