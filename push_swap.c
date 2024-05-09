@@ -6,7 +6,7 @@
 /*   By: loigonza <loigonza@student.42carcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 12:29:21 by loigonza          #+#    #+#             */
-/*   Updated: 2024/05/02 16:18:35 by loigonza         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:45:29 by loigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	sytxfail(char *argv[])
 			return (1);
 		if (argv[i][j] == '-' || argv[i][j] == '+')
 		{
-			if (!(argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9'))
+			if (!(argv[i][j + 1] >= '1' && argv[i][j + 1] <= '9'))
 				return (1);
 			j++;
 		}
